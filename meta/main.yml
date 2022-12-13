@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: 'Sebastian Hamann'
+  description: 'Dropbear setup for OpenWRT'
+
+  license: MIT
+
+  min_ansible_version: '2.10'
+
+  platforms:
+    - name: GenericLinux
+
+  galaxy_tags:
+    - openwrt
+    - dropbear
+
+dependencies: []

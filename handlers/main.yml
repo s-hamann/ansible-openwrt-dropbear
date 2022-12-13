@@ -1,0 +1,5 @@
+---
+- name: 'Reload dropbear'
+  ansible.builtin.service:
+    name: dropbear
+    state: "{{ ansible_facts['is_chroot'] | ternary(omit, 'reloaded') }}"

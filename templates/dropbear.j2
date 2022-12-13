@@ -1,0 +1,5 @@
+{{ ansible_managed | comment }}
+config dropbear
+{% for key, value in (dropbear_config_default | combine(dropbear_config)).items() if value != omit %}
+	option	{{ key }}	'{% if value is boolean %}{{ value | ternary('on', 'off') }}{% else %}{{ value }}{% endif %}'
+{% endfor %}

@@ -1,0 +1,28 @@
+---
+# Note: The authorized_key module would be the obvious choice here, but it
+# requires Python. The lineinfile module has a shell implementation.
+- name: 'Add user SSH public keys'
+  ansible.builtin.lineinfile:
+    path: '/etc/dropbear/authorized_keys'
+    line: "{{ key if key is match('ssh-') else lookup('file', key) }}"
+    owner: root
+    group: root
+    mode: 0600
+    state: present
+  loop: "{{ dropbear_user_public_key }}"
+  loop_control:
+    loop_var: key
+
+- name: 'Configure dropbear'
+  ansible.builtin.template:
+    dest: '/etc/config/dropbear'
+    src: dropbear.j2
+    owner: root
+    group: root
+    mode: 0600
+  notify: 'Reload dropbear'
+
+- name: "{{ dropbear_enable_sftp | bool | ternary('Enable', 'Disable') }} SFTP support"
+  community.general.opkg:
+    name: openssh-sftp-server
+    state: "{{ dropbear_enable_sftp | bool | ternary('present', 'absent') }}"

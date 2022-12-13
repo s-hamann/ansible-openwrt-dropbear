@@ -1,0 +1,5 @@
+---
+dropbear_config_default:
+  Interface: lan
+  PasswordAuth: "{{ dropbear_user_public_key | count == 0 }}"
+  RootPasswordAuth: "{{ dropbear_user_public_key | count == 0 }}"

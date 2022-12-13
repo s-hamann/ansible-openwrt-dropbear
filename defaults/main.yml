@@ -1,0 +1,4 @@
+---
+dropbear_user_public_key: []
+dropbear_config: {}
+dropbear_enable_sftp: false
