@@ -9,6 +9,7 @@
     group: root
     mode: 0600
     state: present
+    create: true
   loop: "{{ dropbear_user_public_key }}"
   loop_control:
     loop_var: key
