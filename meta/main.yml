@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: 'Sebastian Hamann'
-  description: 'Dropbear setup for OpenWRT'
+  description: 'Dropbear setup for OpenWrt'
 
   license: MIT
 

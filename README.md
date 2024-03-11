@@ -1,7 +1,7 @@
-OpenWRT Dropbear
+OpenWrt Dropbear
 ================
 
-This role configures [Dropbear](https://matt.ucc.asn.au/dropbear/dropbear.html) on [OpenWRT](https://www.openwrt.org/) targets.
+This role configures [Dropbear](https://matt.ucc.asn.au/dropbear/dropbear.html) on [OpenWrt](https://www.openwrt.org/) targets.
 It can also set up SSH public key authentication for the `root` user.
 
 Requirements
@@ -9,7 +9,7 @@ Requirements
 
 This role has no special requirements on the controller.
 
-It does, however, require a working [Python](https://www.python.org/) installation on the target system or [gekmihesg's Ansible library for OpenWRT](https://github.com/gekmihesg/ansible-openwrt) on the Ansible controller.
+It does, however, require a working [Python](https://www.python.org/) installation on the target system or [gekmihesg's Ansible library for OpenWrt](https://github.com/gekmihesg/ansible-openwrt) on the Ansible controller.
 
 Role Variables
 --------------
@@ -17,7 +17,7 @@ Role Variables
 * `dropbear_config`  
   A dictionary of uci configuration options for Dropbear.
   Refer to the [documentation](https://openwrt.org/docs/guide-user/base-system/dropbear) for valid keys and their meaning.
-  This role's default configuration deviates from OpenWRT's in two points:
+  This role's default configuration deviates from OpenWrt's in two points:
   * `Interface` is set to `lan`
   * `PasswordAuth` and `RootPasswordAuth` are disabled if `dropbear_user_public_key` is set.
 * `dropbear_user_public_key`  
