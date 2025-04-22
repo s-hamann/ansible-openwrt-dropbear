@@ -1,5 +1,11 @@
 {{ ansible_managed | comment }}
 config dropbear
 {% for key, value in (dropbear_config_default | combine(dropbear_config)).items() if value != omit %}
+{% if value is sequence and value is not string %}
+{% for v in value %}
+	list	{{ key }}	'{% if v is boolean %}{{ value | ternary('on', 'off') }}{% else %}{{ v }}{% endif %}'
+{% endfor %}
+{% else %}
 	option	{{ key }}	'{% if value is boolean %}{{ value | ternary('on', 'off') }}{% else %}{{ value }}{% endif %}'
+{% endif %}
 {% endfor %}
